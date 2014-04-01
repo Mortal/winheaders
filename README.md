@@ -13,3 +13,8 @@ application directory.
 
 winheaders.txt contains the offending headers (for instance the headers in the
 Windows API).
+
+The script computes the include edges in each specified `grep include` file,
+and computes the transitive closure from the winheaders to library headers.
+Then for each library header that transitively includes a winheader,
+if that header is included by an application file, this is reported.
