@@ -98,17 +98,11 @@ def main(library_includes, application_includes, winheaders):
 
     app_includes = frozenset(k for k, v in app_edges.items() if v)
 
-    windows_parents = []
     for f in sorted(parents.keys() & app_includes):
         print('=' * 79)
         p = path(parents, f)
-        if len(p) >= 2:
-            windows_parents.append(p[-2])
         print(' -> '.join(p))
         print('\n'.join(sorted(app_edges[f])))
-
-    print('')
-    print(u'\n'.join(sorted(windows_parents)))
 
 if __name__ == '__main__':
     main(*sys.argv[1:])
